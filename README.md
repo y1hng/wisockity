@@ -9,6 +9,6 @@ Wisockity is an early-stage Python project for a custom binary client-server pro
 - **Command & Flags (`!B`):** Command values currently defined as flags (`STR`, `DNN`, `PSH`, `RST`, `KLL`, and planned ping flag `PNN`).
 
 ## Documentation
-See the current project notes in [`docs/`](docs/), including the [protocol specification](docs/protocol_spec.md) and [module guide](docs/modules.md). The documentation describes the current code and its known gaps; it does not claim that transport, session validation, or security features are complete.
+See the live documentation page at [`docs/index.html`](docs/index.html). It fetches and renders the Markdown files in `docs/` directly; serve the repository over HTTP to use it. The docs describe current code and known gaps, and do not claim that transport, session validation, or security features are complete. MkDocs is not required.
 
 
