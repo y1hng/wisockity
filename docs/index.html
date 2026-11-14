@@ -1,1 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#151a17">
+    <meta name="description" content="Living documentation for Wisockity, an early-stage custom binary protocol in Python.">
+    <title>Wisockity / Protocol Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23151a17'/%3E%3Cpath d='M7 11h6l4 19 4-13 4 13 4-19h5' fill='none' stroke='%23b3d2b1' stroke-width='2.5'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="site.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+    <script defer src="docs.js"></script>
+</head>
+<body>
+    <header class="frame topbar">
+        <a class="identity" href="#overview" aria-label="Wisockity documentation home">
+            <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path d="M3 8h6l3.3 16 3.7-11 3.7 11L23 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+                <path d="M8 4h16" stroke="currentColor" stroke-width="2" opacity=".55"/>
+            </svg>
+            <span class="wordmark">WISOCKITY<small>PROTOCOL NOTES</small></span>
+        </a>
+        <div class="top-meta">
+            <span class="status">EARLY DEVELOPMENT</span>
+            <a class="top-link" href="https://github.com/y1hng/wisockity">SOURCE ↗</a>
+        </div>
+    </header>
+
+    <main class="frame">
+        <section class="masthead" aria-labelledby="page-heading">
+            <div>
+                <p class="kicker">FIELD GUIDE / PYTHON / BINARY PROTOCOL</p>
+                <h1 id="page-heading"><span>Wisockity</span> protocol notes</h1>
+                <p class="summary">A compact, custom binary protocol in its foundation stage. These notes describe what is in the repository today, what is planned next, and where the current design still needs work.</p>
+            </div>
+            <div class="mast-meta" aria-label="Project metadata">
+                <div class="meta-row"><span class="meta-label">CURRENT FOCUS</span><span class="meta-value">CORE PRIMITIVES</span></div>
+                <div class="meta-row"><span class="meta-label">TRANSPORT</span><span class="meta-value">NOT IMPLEMENTED</span></div>
+            </div>
+        </section>
+
+        <section class="architecture" aria-label="Packet header diagram">
+            <div class="architecture-label"><strong>PACKET / HEADER</strong>Fixed-width fields<br>25 bytes total</div>
+            <div class="packet-visual">
+            <svg class="packet-svg" viewBox="0 0 720 86" role="img" aria-labelledby="packet-title packet-desc" xmlns="http://www.w3.org/2000/svg">
+                <title id="packet-title">Wisockity packet header layout</title>
+                <desc id="packet-desc">Magic: 2 bytes. Check: 2 bytes. Session ID: 16 bytes. Length: 4 bytes. Command: 1 byte.</desc>
+                <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                    <rect x="2" y="7" width="84" height="50" fill="#34443b" stroke="#718b76"/>
+                    <rect x="86" y="7" width="84" height="50" fill="#34443b" stroke="#718b76"/>
+                    <rect x="170" y="7" width="336" height="50" fill="#293b40" stroke="#6e929b"/>
+                    <rect x="506" y="7" width="140" height="50" fill="#413b2d" stroke="#98865e"/>
+                    <rect x="646" y="7" width="72" height="50" fill="#413b2d" stroke="#98865e"/>
+                    <g fill="#e6e9e4" font-size="12">
+                        <text x="44" y="28">MAGIC</text><text x="128" y="28">CHECK</text><text x="338" y="28">SESSION ID</text><text x="576" y="28">LENGTH</text><text x="682" y="28">CMD</text>
+                    </g>
+                    <g fill="#a4afa8" font-size="10">
+                        <text x="44" y="46">2 B</text><text x="128" y="46">2 B</text><text x="338" y="46">16 B</text><text x="576" y="46">4 B</text><text x="682" y="46">1 B</text>
+                        <text x="44" y="77">0</text><text x="128" y="77">2</text><text x="338" y="77">4</text><text x="576" y="77">20</text><text x="682" y="77">24</text>
+                    </g>
+                </g>
+            </svg>
+            </div>
+            <div class="packet-caption"><strong>NETWORK BYTE ORDER</strong><code>!HH16sIB</code></div>
+        </section>
+
+        <div class="docs-layout">
+            <aside class="sidebar" aria-label="Documentation navigation">
+                <p class="side-label">DOCUMENTATION</p>
+                <nav class="doc-nav">
+                    <button class="doc-link" type="button" data-document="overview" aria-current="page"><span class="doc-icon">⌂</span>Overview</button>
+                    <button class="doc-link" type="button" data-document="modules" aria-current="false"><span class="doc-icon">[ ]</span>Modules</button>
+                    <button class="doc-link" type="button" data-document="protocol" aria-current="false"><span class="doc-icon">#</span>Protocol spec</button>
+                </nav>
+                <div class="sidebar-note">Pages are loaded from Markdown files in this folder and rendered here. No documentation framework or build step is required.</div>
+            </aside>
+
+            <article id="document-content" class="document markdown" aria-live="polite" aria-busy="true">
+                <p class="doc-loading">Loading documentation</p>
+            </article>
+
+            <aside class="inspector" aria-label="Protocol facts">
+                <section class="inspector-block">
+                    <h2 class="inspector-title">HEADER CONSTANTS</h2>
+                    <div class="inspector-row"><span>Magic</span><code>0x1346</code></div>
+                    <div class="inspector-row"><span>Check</span><code>0x4441</code></div>
+                    <div class="inspector-row"><span>Header</span><code>25 bytes</code></div>
+                    <div class="inspector-row"><span>Payload</span><code>UTF-8</code></div>
+                </section>
+                <section class="inspector-block">
+                    <h2 class="inspector-title">IMPLEMENTATION</h2>
+                    <p class="phase">FOUNDATION STAGE</p>
+                    <p class="inspector-copy"><strong>Core helpers exist.</strong> Client/server transport, ping behavior, and complete validation remain future work.</p>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="frame"><span>WISOCKITY / PROJECT DOCUMENTATION</span><span>STATUS: IN PROGRESS</span></footer>
+</body>
+</html>
 
